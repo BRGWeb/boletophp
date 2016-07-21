@@ -3,8 +3,10 @@ boletophp
 
 Projeto Código-Aberto de Sistema de Boletos bancários em PHP
 
-## Qual o principal motivo deste projeto?
-Este projeto foi criado por Elizeu Alcantara desde Maio/2006 e teve origem do Projeto BBBoletoFree que tiveram colaborações de Daniel William Schultz e Leandro Maniezo que por sua vez foi derivado do PHPBoleto de João Prado Maia e Pablo Martins F. Costa.
+## Porque esse fork foi criado?
+Após anos usando o boletophp para diversos trabalhos percebemos que as modificações realizadas para cada novo projeto terminavam se perdendo com o tempo. Com este repositório pretendemos manter essas alterações e desenvolver a emissão de boletos com registro para todos os bancos. Segue abaixo o Readme original do boletophp:
+
+Com a necessidade de criar uma forma de emissão de boletos com registro,Este projeto foi criado por Elizeu Alcantara desde Maio/2006 e teve origem do Projeto BBBoletoFree que tiveram colaborações de Daniel William Schultz e Leandro Maniezo que por sua vez foi derivado do PHPBoleto de João Prado Maia e Pablo Martins F. Costa.
 
 Criar um sistema de geração de Boletos que seja mais simples do que o PhpBoleto e que se estenda ao desenvolvimento de boletos dos bancos mais usados no mercado, além do Banco do Brasil do projeto BBBoletoFree. Este sistema é de Código Aberto e de Livre Distribuição conforme Licença GPL.
 
