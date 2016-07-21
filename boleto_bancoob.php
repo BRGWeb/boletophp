@@ -1,4 +1,4 @@
-<?php
+<?php 
 // +----------------------------------------------------------------------+
 // | BoletoPhp - Versão Beta                                              |
 // +----------------------------------------------------------------------+
@@ -32,14 +32,14 @@
 // Os valores abaixo podem ser colocados manualmente ou ajustados p/ formulário c/ POST, GET ou de BD (MySql,Postgre,etc)	//
 
 // DADOS DO BOLETO PARA O SEU CLIENTE
-$dias_de_prazo_para_pagamento = 7;
-$taxa_boleto = 0;
-$data_venc = "14/05/2013";//date("d/m/Y", time() + ($dias_de_prazo_para_pagamento * 86400));  // Prazo de X dias OU informe data: "13/04/2006"; 
-$valor_cobrado = "1,00"; // Valor - REGRA: Sem pontos na milhar e tanto faz com "." ou "," ou com 1 ou 2 ou sem casa decimal
+$dias_de_prazo_para_pagamento = $prazo;
+$taxa_boleto = $taxa;
+$data_venc = date("d/m/Y", time() + ($dias_de_prazo_para_pagamento * 86400));  // Prazo de X dias OU informe data: "13/04/2006"; 
+$valor_cobrado = $valor; // Valor - REGRA: Sem pontos na milhar e tanto faz com "." ou "," ou com 1 ou 2 ou sem casa decimal
 $valor_cobrado = str_replace(",", ".",$valor_cobrado);
 $valor_boleto=number_format($valor_cobrado+$taxa_boleto, 2, ',', '');
 
-//$dadosboleto["nosso_numero"] = "08123456";  // Até 8 digitos, sendo os 2 primeiros o ano atual (Ex.: 08 se for 2008)
+$dadosboleto["nosso_numero"] = $nosso_numero;  // Até 8 digitos, sendo os 2 primeiros o ano atual (Ex.: 08 se for 2008)
 
 
 /*************************************************************************
@@ -70,10 +70,10 @@ if(!function_exists('formata_numdoc'))
 	}
 }
 
-$IdDoSeuSistemaAutoIncremento = '2'; // Deve informar um numero sequencial a ser passada a função abaixo, Até 6 dígitos
-$agencia = "3087"; // Num da agencia, sem digito
-$conta = "4593"; // Num da conta, sem digito
-$convenio = "56235"; //Número do convênio indicado no frontend
+$IdDoSeuSistemaAutoIncremento = $nosso_numero; // Deve informar um numero sequencial a ser passada a função abaixo, Até 6 dígitos
+$agencia = $agencia; // Num da agencia, sem digito
+$conta = $conta; // Num da conta, sem digito
+$convenio = $convenio; //Número do convênio indicado no frontend
 
 $NossoNumero = formata_numdoc($IdDoSeuSistemaAutoIncremento,7);
 $qtde_nosso_numero = strlen($NossoNumero);
@@ -116,31 +116,31 @@ $dadosboleto["nosso_numero"] = $NossoNumero . $Dv;
 
 
 
-$dadosboleto["numero_documento"] = "12";	// Num do pedido ou do documento
+$dadosboleto["numero_documento"] = $numero_documento;	// Num do pedido ou do documento
 $dadosboleto["data_vencimento"] = $data_venc; // Data de Vencimento do Boleto - REGRA: Formato DD/MM/AAAA
 $dadosboleto["data_documento"] = date("d/m/Y"); // Data de emissão do Boleto
 $dadosboleto["data_processamento"] = date("d/m/Y"); // Data de processamento do boleto (opcional)
 $dadosboleto["valor_boleto"] = $valor_boleto; 	// Valor do Boleto - REGRA: Com vírgula e sempre com duas casas depois da virgula
 
 // DADOS DO SEU CLIENTE
-$dadosboleto["sacado"] = "Nome do seu Cliente";
-$dadosboleto["endereco1"] = "Endereço do seu Cliente";
-$dadosboleto["endereco2"] = "Cidade - Estado -  CEP: 00000-000";
+$dadosboleto["sacado"] = $sacado;
+$dadosboleto["endereco1"] = $endereco1;
+$dadosboleto["endereco2"] = $endereco2;
 
 // INFORMACOES PARA O CLIENTE
-$dadosboleto["demonstrativo1"] = "Pagamento de Compra na Loja Nonononono";
-$dadosboleto["demonstrativo2"] = "Mensalidade referente a nonon nonooon nononon<br>Taxa bancária - R$ ".number_format($taxa_boleto, 2, ',', '');
-$dadosboleto["demonstrativo3"] = "BoletoPhp - http://www.boletophp.com.br";
+$dadosboleto["demonstrativo1"] = $demonstrativo1;
+$dadosboleto["demonstrativo2"] = $demonstrativo2;
+$dadosboleto["demonstrativo3"] = $demonstrativo3;
 
 // INSTRUÇÕES PARA O CAIXA
-$dadosboleto["instrucoes1"] = "- Sr. Caixa, cobrar multa de 2% após o vencimento";
-$dadosboleto["instrucoes2"] = "- Receber até 10 dias após o vencimento";
-$dadosboleto["instrucoes3"] = "- Em caso de dúvidas entre em contato conosco: xxxx@xxxx.com.br";
-$dadosboleto["instrucoes4"] = "&nbsp; Emitido pelo sistema Projeto BoletoPhp - www.boletophp.com.br";
+$dadosboleto["instrucoes1"] = $instrucoes1;
+$dadosboleto["instrucoes2"] = $instrucoes2;
+$dadosboleto["instrucoes3"] = $instrucoes3;
+$dadosboleto["instrucoes4"] = $instrucoes4;
 
 // DADOS OPCIONAIS DE ACORDO COM O BANCO OU CLIENTE
-$dadosboleto["quantidade"] = "10";
-$dadosboleto["valor_unitario"] = "10";
+$dadosboleto["quantidade"] = "1";
+$dadosboleto["valor_unitario"] = "1";
 $dadosboleto["aceite"] = "N";		
 $dadosboleto["especie"] = "R$";
 $dadosboleto["especie_doc"] = "DM";
@@ -161,11 +161,11 @@ $dadosboleto["convenio"] = $convenio; // Num do convênio - REGRA: No máximo 7 
 $dadosboleto["carteira"] = "1";
 
 // SEUS DADOS
-$dadosboleto["identificacao"] = "BoletoPhp - Código Aberto de Sistema de Boletos";
-$dadosboleto["cpf_cnpj"] = "";
-$dadosboleto["endereco"] = "Coloque o endereço da sua empresa aqui";
-$dadosboleto["cidade_uf"] = "Cidade / Estado";
-$dadosboleto["cedente"] = "Coloque a Razão Social da sua empresa aqui";
+$dadosboleto["identificacao"] =$nomeusuario;
+$dadosboleto["cpf_cnpj"] = $cpf_cnpj_usuario;
+$dadosboleto["endereco"] = $endereco;
+$dadosboleto["cidade_uf"] = $cidade .' '.$estado;
+$dadosboleto["cedente"] = $nomeusuario;
 
 // NÃO ALTERAR!
 include("include/funcoes_bancoob.php");
